@@ -1,0 +1,10 @@
+class Solution:
+    def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        dict={}
+        for i in magazine:
+            dict[i]=1+dict.get(i,0)
+        for i in ransomNote:
+            if i not in dict or dict[i]<=0:
+                return False
+            dict[i]-=1
+        return True
